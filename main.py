@@ -4,7 +4,7 @@ import asyncio
 
 async def main():
     # Select a problem class
-    problem_class = diff.DiffConstant
+    problem_class = diff.DiffProductVariable
     # Generate raw problem with CAS
     inputs = problem_class.generate_random_inputs()
     problem = problem_class(**inputs)

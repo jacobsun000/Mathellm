@@ -1,4 +1,5 @@
 import sympy as sp
+import os
 from latex2sympy2 import latex2sympy
 from typing import List, Dict
 from openai import OpenAI
@@ -7,8 +8,7 @@ from openai.types.chat import (
     ChatCompletionUserMessageParam,
 )
 
-OPNEAI_API_KEY = "sk-proj-1QFI1Oi7vpJDNbqXJF5xT3BlbkFJFIYSZnaXVpbvFhJIT7cO"
-client = OpenAI(api_key=OPNEAI_API_KEY)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 class Problem:
