@@ -1,5 +1,7 @@
 # Mathellm - Math Problem Generator with LLM
 
+<img src="./asset/logo.gif" alt="Mathellm Logo" width="256" height="256" />
+
 CSCI 5541 course project by Linguatech:
 
 - [Jacob Sun](github.com/jacobsun)
