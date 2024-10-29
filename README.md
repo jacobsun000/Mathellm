@@ -4,9 +4,9 @@
 
 CSCI 5541 course project by Linguatech:
 
-- [Jacob Sun](github.com/jacobsun)
-- [Chloe Chen]()
-- [Tong Liao]()
+- [Jacob Sun](https://github.com/jacobsun000)
+- [Chloe Chen](https://github.com/RichSomeday222)
+- [Tong Liao](https://github.com/Humanlt)
 
 ## Introduction
 
