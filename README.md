@@ -21,6 +21,16 @@ Mathellm is a math problem generator with LLM (Language Model) that can generate
 - Linux
 - Python 3.11
 
+Environment variable:
+
+Create a `.env` file in the root directory with the following content:
+
+```bash
+export OPENAI_API_KEY="Your OpenAI API Key"
+```
+
+Then setup python environment:
+
 ```bash
 pip install -r requirements.txt
 ```
