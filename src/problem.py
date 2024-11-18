@@ -1,14 +1,13 @@
 import sympy as sp
-import os
 from latex2sympy2 import latex2sympy
 from typing import List, Dict
-from openai import OpenAI
+from src.llm import Client
 from openai.types.chat import (
     ChatCompletionSystemMessageParam,
     ChatCompletionUserMessageParam,
 )
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = Client(provider="ollama", model="llama3.2")
 
 
 class Problem:
@@ -76,7 +75,6 @@ class Problem:
         }
 
     async def wrap_with_llm(self):
-        model = "gpt-4o"
         system_prompt = (
             "You are a math teacher creating context-rich math problems. "
             "Each problem should have a real-world context. "
@@ -95,35 +93,18 @@ class Problem:
             ChatCompletionUserMessageParam({"role": "user", "content": user_prompt}),
         ]
 
-        max_retries = 3
-        n_retries = 0
-        while n_retries < max_retries:
-            n_retries += 1
-            content = None
-            try:
-                completion = client.chat.completions.create(
-                    model=model, messages=messages
-                )
-                content = completion.choices[0].message.content
-                if not content:
-                    continue
-                print(f"Generator: Generated {self.name} in {n_retries} retries.")
-                self.content = content
-                return
-            except Exception as e:
-                print(f"Generate Problem: Error: {e}, return: {content}")
-                continue
-        raise Exception("Failed to generate problems.")
+        self.content = await client.chat(messages)
 
     def __repr__(self):
-        return f"""\
-Problem: {self.name}
-    Description: {self.description}
-    Level: {self.level}
-    Difficulty: {self.difficulty}
-    Tags: {self.tags}
-    Expression: {self.latex_expression()}
-    Solution: {self.latex_solution()}
-    Answer: {self.latex_answer()}
-    Content: {self.content}\
-"""
+        lines = [
+            f"Problem: {self.name}",
+            f"    Description: {self.description}",
+            f"    Level: {self.level}",
+            f"    Difficulty: {self.difficulty}",
+            f"    Tags: {self.tags}",
+            f"    Expression: {self.latex_expression()}",
+            f"    Solution: {self.latex_solution()}",
+            f"    Answer: {self.latex_answer()}",
+            f"    Content: {self.content}",
+        ]
+        return "\n".join(lines)
