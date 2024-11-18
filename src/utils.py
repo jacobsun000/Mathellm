@@ -75,13 +75,13 @@ class SpRand:
 
     @staticmethod
     def function_with_difficulty():
-        # (function, difficulty)
         def pow(power, evaluate=False):
             return sp.Pow(sp.symbols("a"), power)
 
         def linear(symbol, evaluate=False):
             return SpRand.constant() * symbol
 
+        # (function, difficulty)
         FUNCS = [
             (linear, 1),
             (sp.exp, 2),

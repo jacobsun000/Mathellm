@@ -54,10 +54,10 @@ class DiffBasicFunction(Problem):
 
     @staticmethod
     def generate_random_inputs():
-        # (function, level, difficulty)
         def pow(power):
             return sp.Pow(sp.symbols("a"), power)
 
+        # (function, level, difficulty)
         FUNCS = [
             (sp.exp, 1, 4),
             (sp.log, 1, 5),
