@@ -7,7 +7,7 @@ from openai.types.chat import (
     ChatCompletionUserMessageParam,
 )
 
-client = Client(provider="ollama", model="llama3.2")
+client = Client()
 
 
 class Problem:
