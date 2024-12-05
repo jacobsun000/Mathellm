@@ -20,6 +20,8 @@ Mathellm is a math problem generator with LLM (Language Model) that can generate
 
 - Linux
 - Python 3.11
+- Node.js
+- npm/pnpm
 
 Environment variable:
 
@@ -35,34 +37,24 @@ Then setup python environment:
 pip install -r requirements.txt
 ```
 
-## Usage
+Next setup React frontend:
 
-Choose an arbitrary problem class from `src/differential.py`:
-
-```python
-import src.differential as diff
-import asyncio
-
-async def main():
-    # Select a problem class
-    problem_class = diff.DiffConstant
-    # Generate raw problem with CAS
-    inputs = problem_class.generate_random_inputs()
-    problem = problem_class(**inputs)
-    # Wrap the problem content with LLM
-    await problem.wrap_with_llm()
-    # Display the problem
-    print(problem)
-
-if __name__ == "__main__":
-    asyncio.run(main())
+```bash
+cd frontend
+pnpm install
 ```
 
-Run `main.py` with following command:
+## Usage
+
+Run with following command:
 
 ```bash
 ./run.sh
 ```
+
+## Demo
+
+![Demo](./asset/demo.png)
 
 ## Example
 
