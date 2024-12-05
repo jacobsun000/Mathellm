@@ -72,6 +72,7 @@ class Problem:
             "expression": self.latex_expression(),
             "solution": self.latex_solution(),
             "answer": self.latex_answer(),
+            "content": self.content,
         }
 
     async def wrap_with_llm(self):
@@ -94,6 +95,9 @@ class Problem:
         ]
 
         self.content = await client.chat(messages)
+        self.content = self.content.replace("```latex", "")
+        self.content = self.content.replace("```", "")
+        self.content = self.content.strip('"')
 
     def __repr__(self):
         lines = [

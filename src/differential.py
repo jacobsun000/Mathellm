@@ -404,3 +404,18 @@ class DiffChainRule(Problem):
 
     def solve(self):
         return self.expression.doit()
+
+
+problem_classes = {
+    0: DiffConstant,
+    1: DiffBasicFunction,
+    2: DiffMulScalar,
+    3: DiffAdd,
+    4: DiffProduct,
+    5: DiffProductVariable,
+    6: DiffQuotient,
+    7: DiffQuotientVariable,
+    8: DiffProductVariableMulScalar,
+    9: DiffQuotientVariableMulScalar,
+    10: DiffChainRule,
+}
