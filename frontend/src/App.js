@@ -3,7 +3,7 @@ import axios from "axios";
 import Latex from "react-latex-next";
 import 'katex/dist/katex.min.css';
 
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "/api/";
 
 function App() {
   const [topics, setTopics] = useState([]);
